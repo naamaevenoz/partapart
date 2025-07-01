@@ -1534,8 +1534,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreenCanvas: {fileID: 1380431288}
-  sequenceSound: {fileID: 8300000, guid: 9dcc111b978a62347926cb5fa6309593, type: 3}
-  afterSound: {fileID: 0}
+  sequenceSound: {fileID: 8300000, guid: 5b3562da09795d6438fa1fc565e09291, type: 3}
+  afterSound: {fileID: 8300000, guid: 47bf32928d67120429479c18d6afe5af, type: 3}
   sequenceDuration: 30
   canvasDelayBeforeShow: 1.5
 --- !u!4 &187337314
