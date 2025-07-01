@@ -145,7 +145,7 @@ namespace _APA.Scripts.Managers
             activeStuckSequenceCoroutine = null;
         }
 
-        void OnDestroy()
+        void OnDestroy()    
         {
             if (Instance == this)
             {

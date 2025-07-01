@@ -48,24 +48,14 @@ namespace _APA.Scripts.Managers
 
         private void OnDisable()
         {
-            // Unsubscribe from all events
             EventManager.OnObjectActivate -= HandleObjectActivate; // *** ADD THIS ***
             EventManager.OnObjectDeactivate -= HandleObjectDeactivate; // *** ADD THIS ***
         }
 
-        // --- Event Handlers ---
         private void
             HandleObjectActivate(string objectID, GameObject source) // We get the ID and the source (e.g., the button)
         {
-            // Decide on a convention for the narration TriggerID.
-            // Option 1: Use the objectID directly.
-            // TryPlayNarration(objectID);
-
-            // Option 2 (Recommended): Append suffix for clarity and flexibility.
-            // This allows different narration for activation vs deactivation if needed.
-            /*string narrationTriggerID = objectID + "_Activate";*/
             string narrationTriggerID = objectID;
-            // /*Debug.Log($"NarratorController: Handling Object Activate. Trying narration ID: {narrationTriggerID}");*/
             TryPlayNarration(narrationTriggerID);
         }
 
@@ -89,6 +79,19 @@ namespace _APA.Scripts.Managers
                 {
                     return;
                 }
+                if (triggerID == "100" && StuckSequenceManager.Instance != null)
+                {
+                    var lightPlayer = FindObjectOfType<LightInteractionController>(); 
+                    if (lightPlayer != null)
+                    {
+                        EventManager.TriggerShowStuckDecisionUI(lightPlayer);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("NarratorController: Tried to trigger stuck sequence, but no LightInteractionController was found in scene.");
+                    }
+                }
+
 
                 if (SoundManager.Instance != null && eventData.VoiceLine != null)
                 {
